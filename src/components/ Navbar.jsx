@@ -19,7 +19,7 @@ export default function Navbar() {
         text-2xl font-semibold tracking-wide 
         bg-gradient-to-r from-[#8f86ff] to-[#d08fff] bg-clip-text text-transparent
       ">
-        Devanshu Mathur
+        Tanish Khandelwal
       </h1>
 
       {/* Desktop Menu */}

@@ -12,27 +12,28 @@ export default function Hero() {
       <div className="max-w-xl mt-10 md:mt-0">
         <h2 className="text-4xl md:text-6xl font-extrabold leading-tight">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-            Devanshu Mathur
+            Tanish Khandelwal
           </span>
         </h2>
 
         <p className="text-xl mt-4 font-semibold text-gray-200">
           I'm a{" "}
           <span className="text-purple-400 animate-pulse">
-            Full-Stack Developer
+            Full-Stack and RPA Developer (Automation)
           </span>
         </p>
 
         <p className="text-gray-300 mt-5 leading-relaxed text-lg">
           🚀 I build fast, responsive & visually modern web experiences with clean
-          code, strong UI/UX, and real-world functionality.
+          code, strong UI/UX, and real-world functionality and Streamlining automation processes .
+
         </p>
 
         {/* BUTTONS */}
         <div className="flex gap-4 mt-8">
-          <button className="bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-3 rounded-xl text-lg font-medium shadow-lg hover:shadow-[0_0_25px_#b200ff] hover:scale-105 transition">
-            View Projects
-          </button>
+         <a href="#services" className="bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-3 rounded-xl text-lg font-medium shadow-lg hover:shadow-[YOUR_EXISTING_CLASSES]">
+          View Projects
+         </a>
 
           <a
             href="#contact-me"

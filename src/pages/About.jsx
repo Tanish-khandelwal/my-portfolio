@@ -11,22 +11,22 @@ import {
 const aboutData = [
   {
     title: "Who I Am",
-    desc: "I am a BCA graduate passionate about web development, always eager to learn and build new things.",
+    desc: "I am a BCA graduate passionate about web development and Automation workflow, always eager to learn and build new things.",
     icon: <FaUser className="text-4xl text-red-500" />,
   },
   {
     title: "My Goal",
-    desc: "To become a skilled Full-Stack Developer and build impactful digital solutions.",
+    desc: "To become a skilled Full-Stack Developer and Automation Specialist.",
     icon: <FaBullseye className="text-4xl text-green-500" />,
   },
   {
     title: "What I Do",
-    desc: "I create responsive, fast and user-friendly websites with clean frontend and backend code.",
+    desc: "I create responsive, fast and user-friendly websites with clean frontend and backend code with streamlining automation processes.",
     icon: <FaLaptopCode className="text-4xl text-blue-500" />,
   },
   {
     title: "Skills",
-    desc: "HTML, CSS, JavaScript, React, Node, MongoDB & problem solving.",
+    desc: "HTML, CSS, JavaScript, React, Node, MongoDB, MySQL , problem solving , RPA , Automation , UiPath.",
     icon: <FaCode className="text-4xl text-purple-500" />,
   },
   {
@@ -36,7 +36,7 @@ const aboutData = [
   },
   {
     title: "What I Love",
-    desc: "Building clean UI, animations and user-focused products.",
+    desc: "Building clean UI, animations , user-focused products , Automation and implementing solutions.",
     icon: <FaHeart className="text-4xl text-pink-500" />,
   },
 ];

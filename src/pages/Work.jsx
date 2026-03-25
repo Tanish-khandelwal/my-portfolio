@@ -8,7 +8,7 @@ export default function Service() {
       <div className="w-36 h-1 bg-yellow-500 mx-auto mt-3 rounded"></div>
 
       <p className="text-gray-300 mt-6 max-w-2xl mx-auto text-center leading-relaxed">
-        Creating responsive and user-friendly websites using modern technologies.
+        Creating responsive , user-friendly websites using modern technologies and automation workflows.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mt-16">

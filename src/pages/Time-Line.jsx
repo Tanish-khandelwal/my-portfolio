@@ -1,12 +1,13 @@
 import React from "react";
-import { FaReact, FaNodeJs, FaDatabase, FaFigma } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaDatabase} from "react-icons/fa";
+import { SiUipath } from "react-icons/si";
 
 export default function MyRole() {
   const skills = [
     { title: "Frontend Development", text: "Building modern, responsive UIs using React, Tailwind CSS & JavaScript.", icon: <FaReact /> },
     { title: "Backend Development", text: "Creating APIs & server logic using Node.js, Express, and REST architecture.", icon: <FaNodeJs /> },
     { title: "Database Management", text: "Handling data efficiently using MongoDB, SQL & schema design.", icon: <FaDatabase /> },
-    { title: "UI/UX & Design", text: "Wireframing, layouts & clean visual design using Figma.", icon: <FaFigma /> },
+    { title: "RPA Development", text: "Designing and implementing automation solutions using UiPath.", icon: <SiUipath /> },
   ];
 
   return (

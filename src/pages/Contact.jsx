@@ -21,12 +21,12 @@ export default function Contact() {
           <div className="p-6 bg-gray-900/60 rounded-2xl border border-gray-700 shadow-[0px_0px_25px_#1f1f1f] backdrop-blur-xl">
             <div className="flex items-center gap-4 mb-4">
               <FaEnvelope className="text-2xl text-yellow-500" />
-              <p className="text-lg font-light">devanshumathur9@gmail.com</p>
+              <p className="text-lg font-light">tanish26112005@gmail.com</p>
             </div>
 
             <div className="flex items-center gap-4 mb-4">
               <FaPhoneAlt className="text-2xl text-green-400" />
-              <p className="text-lg font-light">+91 9876544488</p>
+              <p className="text-lg font-light">+91 6376872253</p>
             </div>
 
             <div className="flex items-center gap-4">
@@ -38,30 +38,28 @@ export default function Contact() {
           {/* Map */}
           <iframe
             className="w-full h-52 rounded-2xl border border-gray-700 shadow-lg"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.548397164665!2d75.78727057519544!3d26.912433776664556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db3d7f3dfd4b7%3A0x7c9b32b1e5b9d9c!2sJaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1732119828291!5m2!1sen!2sin"
-  
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3556.247564162817!2d75.76642287884547!3d26.95905849783423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db3ad9c87e833%3A0xc0b5f0f59161e1!2sKhetan%20Heart%20%26%20Super%20Speciality%20Hospital!5e0!3m2!1sen!2sin!4v1774322597924!5m2!1sen!2sin"
+            width="600"
+            height="450"
+            style={{ border: 0 }}
+            allowfullscreen=""
             loading="lazy"
-            
+            referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
 
           {/* Social Icons */}
           <div className="flex gap-6 mt-4 text-3xl">
-            <a href="https://www.linkedin.com/in/devanshu-mathur-474879241/"
+            <a href="https://www.linkedin.com/in/tanish-khandelwal-654108315"
               target="_blank"
               className="text-blue-500 hover:scale-125 hover:-rotate-6 transition duration-300">
               <FaLinkedin />
             </a>
-            <a href="https://github.com/devanshumathur22"
+            <a href="https://github.com/Tanish-khandelwal"
               target="_blank"
               className="text-gray-300 hover:scale-125 hover:-rotate-6 transition duration-300">
               <FaGithub />
             </a>
-            <a href="https://twitter.com"
-              target="_blank"
-              className="text-sky-400 hover:scale-125 hover:-rotate-6 transition duration-300">
-              <FaTwitter />
-            </a>
-            <a href="https://instagram.com"
+            <a href="https://www.instagram.com/_tanishhh26/"
               target="_blank"
               className="text-pink-500 hover:scale-125 hover:-rotate-6 transition duration-300">
               <FaInstagram />

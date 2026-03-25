@@ -13,7 +13,7 @@ export default function Fullstack() {
       <div className="w-32 h-1 bg-yellow-500 mx-auto mt-3 rounded"></div>
 
       <p className="text-gray-300 mt-8 max-w-3xl mx-auto text-center leading-relaxed">
-        Hi, I’m Devanshu Mathur, a passionate full-stack developer focused on building responsive websites.
+        Hi, I’m Tanish Khandelwal, a passionate full-stack developer focused on building responsive websites.
         Skilled in frontend design, backend logic, and databases — I love turning ideas into real digital products.
       </p>
 
