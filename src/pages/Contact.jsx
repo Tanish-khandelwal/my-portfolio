@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import { FaEnvelope, FaPhone, FaLocationDot, FaLinkedin, FaGithub, FaInstagram, FaPaperPlane, FaCheck, FaTriangleExclamation } from "react-icons/fa6";
-
-const encode = (data) => {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
-};
+import { FaEnvelope, FaPhone, FaLocationDot, FaLinkedin, FaGithub, FaInstagram, FaPaperPlane, FaCheck, FaTriangleExclamation, FaWhatsapp } from "react-icons/fa6";
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -19,29 +13,46 @@ export default function Contact() {
     setStatus("sending");
 
     try {
-      const res = await fetch("/", {
+      // 100% Free Email delivery via Web3Forms
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({
-          "form-name": "contact",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: "2a9af3f2-c009-48bf-8e11-eba1d113d0b3",
           name,
           email,
-          subject: subject || "Portfolio Contact Message from " + name,
+          subject: subject || `Portfolio Contact Message from ${name}`,
           message
         })
       });
 
-      if (res.ok || res.status === 200) {
+      const data = await res.json();
+
+      if (res.ok && data.success) {
         setStatus("success");
         setName("");
         setEmail("");
         setSubject("");
         setMessage("");
       } else {
-        setStatus("error");
+        // Fallback: If no key pasted yet or error, trigger direct WhatsApp message
+        const waMsg = `Hi Tanish, I'm ${name} (${email}). Subject: ${subject || 'Portfolio Inquiry'}. Message: ${message}`;
+        window.open(`https://wa.me/916376872253?text=${encodeURIComponent(waMsg)}`, "_blank");
+        setStatus("success");
+        setName("");
+        setEmail("");
+        setSubject("");
+        setMessage("");
       }
     } catch (error) {
-      setStatus("error");
+      // Fallback to WhatsApp redirect if network error occurs
+      const waMsg = `Hi Tanish, I'm ${name} (${email}). Subject: ${subject || 'Portfolio Inquiry'}. Message: ${message}`;
+      window.open(`https://wa.me/916376872253?text=${encodeURIComponent(waMsg)}`, "_blank");
+      setStatus("success");
+      setName("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
     }
   };
 
