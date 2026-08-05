@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { FaEnvelope, FaPhone, FaLocationDot, FaLinkedin, FaGithub, FaInstagram, FaPaperPlane, FaCheck, FaTriangleExclamation } from "react-icons/fa6";
 
+const encode = (data) => {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+};
+
 export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -13,12 +19,11 @@ export default function Contact() {
     setStatus("sending");
 
     try {
-      // Using resilient serverless Web3Forms endpoint
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          access_key: "YOUR_ACCESS_KEY_OR_FREE_TOKEN", // Web3Forms key or standard form post
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": "contact",
           name,
           email,
           subject: subject || "Portfolio Contact Message from " + name,
@@ -33,20 +38,10 @@ export default function Contact() {
         setSubject("");
         setMessage("");
       } else {
-        // Fallback simulated success for local demonstration if no external API key attached
-        setStatus("success");
-        setName("");
-        setEmail("");
-        setSubject("");
-        setMessage("");
+        setStatus("error");
       }
     } catch (error) {
-      // Fallback graceful success notification so UX is smooth
-      setStatus("success");
-      setName("");
-      setEmail("");
-      setSubject("");
-      setMessage("");
+      setStatus("error");
     }
   };
 
@@ -172,12 +167,24 @@ export default function Contact() {
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                onSubmit={handleSubmit}
+                className="space-y-4"
+              >
+                {/* Required Netlify hidden form inputs */}
+                <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="bot-field" />
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="text-xs font-semibold text-gray-400 block mb-1">Your Name</label>
                     <input
                       type="text"
+                      name="name"
                       placeholder="e.g. John Doe"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -190,6 +197,7 @@ export default function Contact() {
                     <label className="text-xs font-semibold text-gray-400 block mb-1">Your Email</label>
                     <input
                       type="email"
+                      name="email"
                       placeholder="e.g. john@example.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -203,6 +211,7 @@ export default function Contact() {
                   <label className="text-xs font-semibold text-gray-400 block mb-1">Subject</label>
                   <input
                     type="text"
+                    name="subject"
                     placeholder="e.g. Full Stack Developer Opportunity / RPA Project"
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
@@ -214,6 +223,7 @@ export default function Contact() {
                   <label className="text-xs font-semibold text-gray-400 block mb-1">Your Message</label>
                   <textarea
                     rows="5"
+                    name="message"
                     placeholder="Write your message here..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
