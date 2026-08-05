@@ -1,34 +1,44 @@
-import React from 'react'
-import Navbar from "../src/components/ Navbar"
-import Hero from "../src/components/Hero"
-import About from "../src/pages/About"
-import Contact from '../src/pages/Contact'
-import Services from "../src/pages/Service"
-import Work from "../src/pages/Work"
-import TimeLine from "../src/pages/Time-Line"
-import Footer from "../src/components/Footer"
-import Fullstack from "../src/pages/Fullstack"
-// import Roadmap from "../src/pages/Roadmap"
-import Certificates from '../src/pages/Certificates'
-import Slider from "../src/pages/Slider"
+import React, { useState } from "react";
+import Navbar from "./components/Navbar";
+import ResumeModal from "./components/ResumeModal";
+import Hero from "./components/Hero";
+import About from "./pages/About";
+import Skills from "./pages/Skills";
+import Experience from "./pages/Experience";
+import Work from "./pages/Work";
+import RpaSpotlight from "./pages/RpaSpotlight";
+import Certificates from "./pages/Certificates";
+import Contact from "./pages/Contact";
+import Footer from "./components/Footer";
 
 export default function App() {
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+
   return (
-    <div>
-        <Navbar />
-        <Hero />
+    <div className="min-h-screen bg-[#0b0f19] text-[#e2e8f0]">
+      {/* Resume Viewer Modal */}
+      <ResumeModal
+        isOpen={isResumeOpen}
+        onClose={() => setIsResumeOpen(false)}
+      />
+
+      {/* Navigation Header */}
+      <Navbar onOpenResume={() => setIsResumeOpen(true)} />
+
+      {/* Core Sections */}
+      <main>
+        <Hero onOpenResume={() => setIsResumeOpen(true)} />
         <About />
-        <Certificates />
-        <TimeLine />
-        <Fullstack />
-        {/* <Roadmap /> */}
-       
+        <Skills />
+        <Experience />
         <Work />
-         <Services />
-        <Slider/>
-       
+        <RpaSpotlight />
+        <Certificates />
         <Contact />
-        <Footer />
+      </main>
+
+      {/* Footer */}
+      <Footer onOpenResume={() => setIsResumeOpen(true)} />
     </div>
-  )
+  );
 }
