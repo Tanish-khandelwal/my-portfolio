@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { FaUpRightFromSquare, FaGithub, FaLayerGroup, FaXmark, FaCheck } from "react-icons/fa6";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaUpRightFromSquare, FaGithub, FaXmark, FaCheck } from "react-icons/fa6";
 
 import petworld from "../assets/image/petworld.jpg";
 import event from "../assets/image/events.jpg";
-import coffee from "../assets/image/coffee.jpg";
 import portfolioImg from "../assets/image/portfolio.png";
 import ipl from "../assets/image/IPL_clone.png";
 import erp from "../assets/image/ERP.png";
@@ -107,188 +107,220 @@ export default function Work() {
     : projectsData.filter(p => p.category === activeCategory);
 
   return (
-    <section id="projects" className="py-24 px-6 md:px-12 bg-[#0d121f] relative">
+    <section id="projects" className="py-24 px-6 md:px-12 bg-[#0d121f] relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto space-y-4 mb-16"
+        >
           <h2 className="text-xs uppercase tracking-widest text-purple-400 font-bold">Featured Work</h2>
           <h3 className="text-3xl md:text-5xl font-extrabold text-white">
             Projects & <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Live Applications</span>
           </h3>
           <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
-        </div>
+        </motion.div>
 
         {/* Category Tabs */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {projectCategories.map((cat) => (
-            <button
+            <motion.button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition duration-300 ${activeCategory === cat.id
                 ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-900/40"
                 : "bg-gray-900/80 border border-gray-800 text-gray-400 hover:text-white hover:border-gray-700"
                 }`}
             >
               {cat.label}
-            </button>
+            </motion.button>
           ))}
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-glass-card rounded-2xl border border-white/10 overflow-hidden hover:border-purple-500/40 transition duration-300 group flex flex-col justify-between shadow-xl"
-            >
-              {/* Image Banner */}
-              <div className="relative h-48 overflow-hidden bg-gray-900">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0d121f] via-transparent to-transparent"></div>
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                layout
+                initial={{ opacity: 0, scale: 0.9, y: 25 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: -15 }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                whileHover={{ y: -8 }}
+                className="bg-glass-card rounded-2xl border border-white/10 overflow-hidden hover:border-purple-500/40 transition duration-300 group flex flex-col justify-between shadow-xl"
+              >
+                {/* Image Banner */}
+                <div className="relative h-48 overflow-hidden bg-gray-900">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80 group-hover:opacity-100"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d121f] via-transparent to-transparent"></div>
 
-                {project.featured && (
-                  <span className="absolute top-3 left-3 px-3 py-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-[11px] font-bold rounded-full shadow-lg">
-                    Resume Featured
-                  </span>
-                )}
-              </div>
-
-              {/* Card Body */}
-              <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                <div>
-                  <h4 className="text-xl font-bold text-white group-hover:text-purple-300 transition">
-                    {project.title}
-                  </h4>
-                  <p className="text-xs text-purple-400 font-medium mt-1">{project.tagline}</p>
-                  <p className="text-xs text-gray-300 mt-3 leading-relaxed line-clamp-3">
-                    {project.desc}
-                  </p>
-                </div>
-
-                {/* Tech Badges */}
-                <div className="flex flex-wrap gap-1.5 pt-2">
-                  {project.tech.map((t, tIdx) => (
-                    <span key={tIdx} className="px-2.5 py-0.5 bg-gray-900 border border-gray-800 text-gray-300 text-[11px] rounded-md font-mono">
-                      {t}
+                  {project.featured && (
+                    <span className="absolute top-3 left-3 px-3 py-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-[11px] font-bold rounded-full shadow-lg">
+                      Resume Featured
                     </span>
-                  ))}
+                  )}
                 </div>
 
-                {/* Action Buttons */}
-                <div className="pt-4 border-t border-gray-800 flex items-center justify-between gap-3">
-                  <button
-                    onClick={() => setSelectedProject(project)}
-                    className="text-xs font-semibold text-purple-300 hover:text-white underline transition"
-                  >
-                    View Details
-                  </button>
-
-                  <div className="flex items-center gap-2">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="p-2 rounded-lg bg-gray-900 border border-gray-800 text-gray-300 hover:text-white hover:border-purple-500 transition"
-                      title="GitHub Repository"
-                    >
-                      <FaGithub className="text-sm" />
-                    </a>
-
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white text-xs font-semibold flex items-center gap-1.5 shadow transition"
-                    >
-                      Live Demo <FaUpRightFromSquare className="text-[10px]" />
-                    </a>
+                {/* Card Body */}
+                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                  <div>
+                    <h4 className="text-xl font-bold text-white group-hover:text-purple-300 transition">
+                      {project.title}
+                    </h4>
+                    <p className="text-xs text-purple-400 font-medium mt-1">{project.tagline}</p>
+                    <p className="text-xs text-gray-300 mt-3 leading-relaxed line-clamp-3">
+                      {project.desc}
+                    </p>
                   </div>
-                </div>
 
-              </div>
-            </div>
-          ))}
-        </div>
+                  {/* Tech Badges */}
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {project.tech.map((t, tIdx) => (
+                      <span key={tIdx} className="px-2.5 py-0.5 bg-gray-900 border border-gray-800 text-gray-300 text-[11px] rounded-md font-mono">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="pt-4 border-t border-gray-800 flex items-center justify-between gap-3">
+                    <button
+                      onClick={() => setSelectedProject(project)}
+                      className="text-xs font-semibold text-purple-300 hover:text-white underline transition"
+                    >
+                      View Details
+                    </button>
+
+                    <div className="flex items-center gap-2">
+                      <motion.a
+                        whileHover={{ scale: 1.1 }}
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="p-2 rounded-lg bg-gray-900 border border-gray-800 text-gray-300 hover:text-white hover:border-purple-500 transition"
+                        title="GitHub Repository"
+                      >
+                        <FaGithub className="text-sm" />
+                      </motion.a>
+
+                      <motion.a
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        href={project.live}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white text-xs font-semibold flex items-center gap-1.5 shadow transition"
+                      >
+                        Live Demo <FaUpRightFromSquare className="text-[10px]" />
+                      </motion.a>
+                    </div>
+                  </div>
+
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
       </div>
 
       {/* Project Detail Modal */}
-      {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className="relative w-full max-w-2xl bg-[#0f172a] border border-purple-500/40 rounded-2xl shadow-2xl p-6 md:p-8 text-white space-y-6 max-h-[90vh] overflow-y-auto">
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
+          >
+            <motion.div 
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              transition={{ duration: 0.3 }}
+              className="relative w-full max-w-2xl bg-[#0f172a] border border-purple-500/40 rounded-2xl shadow-2xl p-6 md:p-8 text-white space-y-6 max-h-[90vh] overflow-y-auto"
+            >
 
-            <div className="flex justify-between items-start">
+              <div className="flex justify-between items-start">
+                <div>
+                  <h3 className="text-2xl font-bold text-white">{selectedProject.title}</h3>
+                  <p className="text-xs text-purple-400 mt-1 font-medium">{selectedProject.tagline}</p>
+                </div>
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="p-2 text-gray-400 hover:text-white bg-gray-800 rounded-xl transition"
+                >
+                  <FaXmark className="text-xl" />
+                </button>
+              </div>
+
+              <p className="text-sm text-gray-300 leading-relaxed bg-gray-900/60 p-4 rounded-xl border border-gray-800">
+                {selectedProject.desc}
+              </p>
+
+              {/* Key Features Bullet points */}
               <div>
-                <h3 className="text-2xl font-bold text-white">{selectedProject.title}</h3>
-                <p className="text-xs text-purple-400 mt-1 font-medium">{selectedProject.tagline}</p>
+                <h4 className="text-sm font-bold text-purple-300 mb-3">Key Highlights & Architecture</h4>
+                <ul className="space-y-2">
+                  {selectedProject.bullets.map((bullet, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5 text-xs text-gray-300">
+                      <span className="mt-0.5 p-1 rounded-full bg-purple-900 border border-purple-500 text-purple-300 text-[8px]">
+                        <FaCheck />
+                      </span>
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="p-2 text-gray-400 hover:text-white bg-gray-800 rounded-xl transition"
-              >
-                <FaXmark className="text-xl" />
-              </button>
-            </div>
 
-            <p className="text-sm text-gray-300 leading-relaxed bg-gray-900/60 p-4 rounded-xl border border-gray-800">
-              {selectedProject.desc}
-            </p>
-
-            {/* Key Features Bullet points */}
-            <div>
-              <h4 className="text-sm font-bold text-purple-300 mb-3">Key Highlights & Architecture</h4>
-              <ul className="space-y-2">
-                {selectedProject.bullets.map((bullet, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5 text-xs text-gray-300">
-                    <span className="mt-0.5 p-1 rounded-full bg-purple-900 border border-purple-500 text-purple-300 text-[8px]">
-                      <FaCheck />
+              {/* Tech Stack */}
+              <div>
+                <h4 className="text-sm font-bold text-purple-300 mb-2">Technologies Used</h4>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.tech.map((t, idx) => (
+                    <span key={idx} className="px-3 py-1 bg-purple-950/80 border border-purple-800 text-purple-200 text-xs rounded-lg font-mono">
+                      {t}
                     </span>
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Tech Stack */}
-            <div>
-              <h4 className="text-sm font-bold text-purple-300 mb-2">Technologies Used</h4>
-              <div className="flex flex-wrap gap-2">
-                {selectedProject.tech.map((t, idx) => (
-                  <span key={idx} className="px-3 py-1 bg-purple-950/80 border border-purple-800 text-purple-200 text-xs rounded-lg font-mono">
-                    {t}
-                  </span>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Modal Actions */}
-            <div className="pt-4 border-t border-gray-800 flex justify-end gap-3">
-              <a
-                href={selectedProject.github}
-                target="_blank"
-                rel="noreferrer"
-                className="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-200 text-xs font-semibold rounded-xl flex items-center gap-2 transition"
-              >
-                <FaGithub /> GitHub Code
-              </a>
-              <a
-                href={selectedProject.live}
-                target="_blank"
-                rel="noreferrer"
-                className="px-5 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white text-xs font-semibold rounded-xl flex items-center gap-2 shadow-lg transition"
-              >
-                Open Live Site <FaUpRightFromSquare />
-              </a>
-            </div>
+              {/* Modal Actions */}
+              <div className="pt-4 border-t border-gray-800 flex justify-end gap-3">
+                <a
+                  href={selectedProject.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-200 text-xs font-semibold rounded-xl flex items-center gap-2 transition"
+                >
+                  <FaGithub /> GitHub Code
+                </a>
+                <a
+                  href={selectedProject.live}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-5 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white text-xs font-semibold rounded-xl flex items-center gap-2 shadow-lg transition"
+                >
+                  Open Live Site <FaUpRightFromSquare />
+                </a>
+              </div>
 
-          </div>
-        </div>
-      )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </section>
   );
