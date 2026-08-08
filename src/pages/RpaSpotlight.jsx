@@ -33,19 +33,19 @@ export default function RpaSpotlight() {
   return (
     <section id="automation" className="py-24 px-6 md:px-12 bg-[#0b0f19] relative">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-950/60 border border-orange-500/30 text-orange-300 text-xs font-semibold">
             <SiUipath className="text-orange-500" /> Enterprise RPA Expertise
           </div>
-          
+
           <h3 className="text-3xl md:text-5xl font-extrabold text-white">
             UiPath <span className="bg-gradient-to-r from-orange-400 via-pink-500 to-purple-400 bg-clip-text text-transparent">Robotic Process Automation</span>
           </h3>
-          
+
           <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
-            Certified **UiPath RPA Developer** combining full-stack software development with automated workflow bots to eliminate repetitive manual operations and optimize business productivity.
+            Certified UiPath RPA Developer combining full-stack software development with automated workflow bots to eliminate repetitive manual operations and optimize business productivity.
           </p>
           <div className="w-20 h-1 bg-gradient-to-r from-orange-500 to-purple-500 mx-auto rounded-full"></div>
         </div>

@@ -6,7 +6,7 @@ import event from "../assets/image/events.jpg";
 import coffee from "../assets/image/coffee.jpg";
 import portfolioImg from "../assets/image/portfolio.png";
 import ipl from "../assets/image/IPL_clone.png";
-import lms from "../assets/image/LMS.png";
+import erp from "../assets/image/ERP.png";
 
 const projectCategories = [
   { id: "all", label: "All Projects" },
@@ -33,19 +33,19 @@ const projectsData = [
     featured: true
   },
   {
-    title: "Leave Management System",
+    title: "Coaching ERP System",
     category: "mern",
-    tagline: "Automated Enterprise Workflow for Leave Requests & Tracking",
-    desc: "Engineered a secure full-stack web application to completely automate leave application requests, tracking, and approval workflows.",
+    tagline: "Automated Educational Resource Planning & Management System",
+    desc: "Engineered a secure full-stack web application to streamline coaching institute operations, student tracking, and role-based administrative workflows.",
     bullets: [
-      "Created dynamic frontend dashboard with AJAX-enabled modules for instantaneous state updates without page refreshes.",
-      "Designed secure database schema for user roles, manager approvals, and status tracking.",
-      "PHP backend logic integrated with MySQL database."
+      "Built a dynamic React frontend powered by Vite, Tailwind CSS, and Zustand for seamless state updates.",
+      "Architected a secure Node.js & Express REST API with JWT authentication and role-based authorization.",
+      "Integrated a cloud PostgreSQL database via Prisma ORM with automated server keep-awake monitoring."
     ],
-    tech: ["PHP", "MySQL", "JavaScript", "AJAX", "jQuery", "HTML/CSS"],
-    live: "http://lmsproject.rf.gd/",
-    github: "https://github.com/Tanish-khandelwal",
-    image: lms,
+    tech: ["React", "Vite", "Tailwind CSS", "Node.js", "Express", "PostgreSQL", "Prisma"],
+    live: "https://educationtracks.netlify.app/",
+    github: "https://github.com/Tanish-khandelwal/coaching-erp-frontend",
+    image: erp,
     featured: true
   },
   {
@@ -96,22 +96,6 @@ const projectsData = [
     image: event,
     featured: false
   },
-  {
-    title: "Coffee Shop & Bakery Portal",
-    category: "frontend",
-    tagline: "Interactive Menu & Online Ordering Concept UI",
-    desc: "Visually aesthetic UI for artisanal coffee shops featuring hero banners, menu categories, and ordering interface.",
-    bullets: [
-      "Hero banner with call-to-action buttons.",
-      "Interactive coffee and bakery product catalog.",
-      "Pixel-perfect styling and smooth hover micro-animations."
-    ],
-    tech: ["React", "Tailwind CSS", "Component Cards", "Vercel"],
-    live: "https://coffee-web-wwoc.vercel.app/",
-    github: "https://github.com/Tanish-khandelwal",
-    image: coffee,
-    featured: false
-  }
 ];
 
 export default function Work() {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaCode, FaLaptopCode, FaDatabase, FaGears, FaLayerGroup, FaCss3Alt } from "react-icons/fa6";
+import { FaCode, FaLaptopCode, FaDatabase, FaGears, FaLayerGroup, FaCss3Alt, FaChevronDown, FaChevronUp } from "react-icons/fa6";
 import { SiJavascript, SiCplusplus, SiPython, SiHtml5, SiReact, SiNodedotjs, SiExpress, SiVite, SiTailwindcss, SiMongodb, SiMysql, SiPostgresql, SiGithub, SiNetlify, SiUipath } from "react-icons/si";
 
 const skillCategories = [
@@ -38,10 +38,18 @@ const skillsData = [
 
 export default function Skills() {
   const [activeTab, setActiveTab] = useState("all");
+  const [showAll, setShowAll] = useState(false);
 
   const filteredSkills = activeTab === "all" 
     ? skillsData 
     : skillsData.filter(s => s.category === activeTab);
+
+  const visibleSkills = showAll ? filteredSkills : filteredSkills.slice(0, 10);
+
+  const handleTabChange = (tabId) => {
+    setActiveTab(tabId);
+    setShowAll(false);
+  };
 
   return (
     <section id="skills" className="py-24 px-6 md:px-12 bg-[#0d121f] relative">
@@ -61,7 +69,7 @@ export default function Skills() {
           {skillCategories.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => handleTabChange(tab.id)}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition duration-300 ${
                 activeTab === tab.id
                   ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-900/40"
@@ -75,7 +83,7 @@ export default function Skills() {
 
         {/* Skills Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          {filteredSkills.map((skill, index) => (
+          {visibleSkills.map((skill, index) => (
             <div
               key={index}
               className="p-5 bg-glass-card rounded-2xl border border-white/10 hover:border-purple-500/50 hover:scale-105 transition duration-300 group shadow-lg text-center flex flex-col items-center justify-center space-y-3"
@@ -90,6 +98,23 @@ export default function Skills() {
             </div>
           ))}
         </div>
+
+        {/* Show More / Show Less Button */}
+        {filteredSkills.length > 10 && (
+          <div className="mt-10 text-center">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600/20 to-pink-600/20 hover:from-purple-600 hover:to-pink-600 border border-purple-500/40 text-white font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-purple-500/25 active:scale-95 group"
+            >
+              <span>{showAll ? "Show Less" : "Show More Skills"}</span>
+              {showAll ? (
+                <FaChevronUp className="text-purple-400 group-hover:text-white transition duration-300" />
+              ) : (
+                <FaChevronDown className="text-purple-400 group-hover:text-white transition duration-300" />
+              )}
+            </button>
+          </div>
+        )}
 
       </div>
     </section>

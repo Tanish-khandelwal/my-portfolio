@@ -18,7 +18,7 @@ export default function Contact() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: "2a9af3f2-c009-48bf-8e11-eba1d113d0b3",
+          access_key: "2a9af3f2-c009-48bf-8e11-eba1d113d0b3", // Replace with your free key from web3forms.com
           name,
           email,
           subject: subject || `Portfolio Contact Message from ${name}`,

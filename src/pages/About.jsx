@@ -45,7 +45,7 @@ export default function About() {
   return (
     <section id="about" className="py-24 px-6 md:px-12 bg-[#0b0f19] relative">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <h2 className="text-xs uppercase tracking-widest text-purple-400 font-bold">About Me</h2>
@@ -57,16 +57,16 @@ export default function About() {
 
         {/* Top Grid: Bio + Strengths */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
-          
+
           {/* Bio text */}
           <div className="lg:col-span-6 space-y-6">
             <div className="p-8 bg-glass-card rounded-2xl border border-white/10 shadow-xl">
               <h4 className="text-2xl font-bold text-white mb-4">Who I Am</h4>
               <p className="text-gray-300 leading-relaxed text-base">
-                I am a <span className="text-purple-300 font-semibold">BCA student at JECRC University</span> and an active Full-Stack Developer Intern. I specialize in building end-to-end web architectures using the **MERN Stack (React, Node.js, Express, MongoDB)** as well as **PHP & MySQL**.
+                I am a <span className="text-purple-300 font-semibold">BCA student at JECRC University</span> and an active Full-Stack Developer Intern. I specialize in building end-to-end web architectures using the MERN Stack (React, Node.js, Express, MongoDB) as well as PHP & MySQL.
               </p>
               <p className="text-gray-300 leading-relaxed text-base mt-4">
-                Beyond full-stack web development, I am a certified **UiPath RPA Developer**, combining software engineering with process automation to streamline business workflows, reduce manual overhead, and optimize data pipelines.
+                Beyond full-stack web development, I am a certified UiPath RPA Developer, combining software engineering with process automation to streamline business workflows, reduce manual overhead, and optimize data pipelines.
               </p>
 
               {/* Soft Skills Badges */}
